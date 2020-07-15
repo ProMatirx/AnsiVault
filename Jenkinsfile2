@@ -24,7 +24,7 @@ node {
            {
        echo "Docker Login"
 	   
-       sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags dok --vault-password-file ./.vaultpass "
+       sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags docker --vault-password-file ./.vaultpass "
 	   
 	   sh ' echo $? '
    
