@@ -1,0 +1,35 @@
+#!groovy
+
+node {
+        stage('Check Out') {
+		
+		checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+		doGenerateSubmoduleConfigurations: false, 
+		extensions: [], 
+		submoduleCfg: [], 
+		userRemoteConfigs: [[url: 'https://github.com/ProMatirx/AnsiVault.git']]])
+        }
+        stage('Build') {
+            
+                // Example secure string retrieval for Ansible vault password
+                withCredentials([string(credentialsId: 'AnsibleVault', variable: 'vaultpass')]) {
+                
+                    sh "touch ./.vaultpass"                 
+                    sh "echo '${vaultPass}' > ./.vaultpass"
+                    sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags git --vault-password-file ./.vaultpass "
+                
+            }
+        }
+		    stage('Docker login')
+           {
+       echo "Docker Login"
+	   
+       sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags dok --vault-password-file ./.vaultpass "
+	   
+	   sh ' echo $? '
+   
+           }
+    
+	
+	}
+
