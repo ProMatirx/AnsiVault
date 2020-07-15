@@ -1,0 +1,23 @@
+- name: Working with Vault
+  hosts: localhost
+  become: true
+  vars_files:
+          - vault-pass.yml
+  tasks:
+    - name: Clone Repo
+      git:
+            repo: https://{{ guser }}:{{ gpasswd }}@github.com/MuraliKarre/Newone.git
+            dest: /root/git
+      tags:
+          - git
+      #shell: git clone https://{{ guser }}:{{ gpasswd }}@github.com/MuraliKarre/Newone.git
+    - name: Docker Login
+      docker_login:
+       username: "{{ DOCKER_USERNAME }}"
+       password: "{{ DOCKER_PASSWORD }}"
+      tags:
+          - docker
+    - name: Dock log
+      shell:  docker login -u={{ DOCKER_USERNAME }} -p={{ DOCKER_PASSWORD }}
+      tags:
+           - dok 
