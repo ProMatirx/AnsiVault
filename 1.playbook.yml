@@ -6,7 +6,7 @@
   tasks:
     - name: Clone Repo
       git:
-            repo: https://{{ guser }}:{{ gpasswd }}@github.com/MuraliKarre/Newone.git
+            repo: https://{{ guser }}:{{ gpasswd }}@github.com/ProMatirx/DemoRepo.git
             dest: /root/git
       tags:
           - git

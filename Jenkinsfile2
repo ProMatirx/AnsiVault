@@ -9,7 +9,7 @@ node {
 		submoduleCfg: [], 
 		userRemoteConfigs: [[url: 'https://github.com/ProMatirx/AnsiVault.git']]])
         }
-        stage('Build') {
+        stage('Clone Private Repo') {
             
                 // Example secure string retrieval for Ansible vault password
                 withCredentials([string(credentialsId: 'AnsibleVault', variable: 'vaultpass')]) {
