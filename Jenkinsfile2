@@ -27,9 +27,11 @@ node {
        sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags docker --vault-password-file ./.vaultpass "
 	   
 	   sh ' echo $? '
+	   
+	   sh ' ls -la '
+	   
+	   sh ' rm -rf ./.vaultpass'
    
            }
-    
-	
 	}
 
