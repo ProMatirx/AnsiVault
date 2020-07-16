@@ -31,7 +31,8 @@ node {
 	   sh ' ls -la '
 	   
 	   sh ' rm -rf ./.vaultpass'
-   
+
+           sh ' ls -la '   
            }
 	}
 
