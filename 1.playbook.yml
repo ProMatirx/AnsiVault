@@ -13,4 +13,4 @@
     - name: Docker Login
       shell:  docker login -u={{ DOCKER_USERNAME }} -p={{ DOCKER_PASSWORD }}
       tags:
-           - dokcker
+           - docker
