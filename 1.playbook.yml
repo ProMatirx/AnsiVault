@@ -10,13 +10,7 @@
             dest: /root/git
       tags:
           - git
-      register: result
-    - debug:
-            var: result
     - name: Docker Login
       shell:  docker login -u={{ DOCKER_USERNAME }} -p={{ DOCKER_PASSWORD }}
       tags:
            - docker
-      register: result1
-    - debug: 
-            var: result1
