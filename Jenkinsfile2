@@ -14,7 +14,7 @@ node {
                 // Example secure string retrieval for Ansible vault password
                 withCredentials([string(credentialsId: 'AnsibleVault', variable: 'vaultpass')]) {
                 
-                    sh "touch ./.passfile"                 
+                    sh "touch ./.ppassfile"                 
                     sh "echo '${vaultpass}' > ./.passfile"
                     sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags git --vault-password-file ./.passfile "
                 
