@@ -29,8 +29,9 @@ node {
 	   sh ' echo $? '
 	   
 	   sh ' ls -la '
-	   
-	   sh ' rm -rf ./.passfile'
+	   sh ' cat ./.passfile'
+           sh ' rm -rf ppassfile '
+	   //sh ' rm -rf ./.passfile'
 
            sh ' ls -la '   
            }
