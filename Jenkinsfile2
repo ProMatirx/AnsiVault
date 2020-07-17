@@ -14,9 +14,9 @@ node {
                 // Example secure string retrieval for Ansible vault password
                 withCredentials([string(credentialsId: 'AnsibleVault', variable: 'vaultpass')]) {
                 
-                    sh "touch ./.vaultpass"                 
-                    sh "echo '${vaultPass}' > ./.vaultpass"
-                    sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags git --vault-password-file ./.vaultpass "
+                    sh "touch ./.passfile"                 
+                    sh "echo '${vaultpass}' > ./.passfile"
+                    sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags git --vault-password-file ./.passfile "
                 
             }
         }
@@ -24,13 +24,13 @@ node {
            {
        echo "Docker Login"
 	   
-       sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags docker --vault-password-file ./.vaultpass "
+       sh " ansible-playbook $WORKSPACE/1.playbook.yml --tags docker --vault-password-file ./.passfile "
 	   
 	   sh ' echo $? '
 	   
 	   sh ' ls -la '
 	   
-	   sh ' rm -rf ./.vaultpass'
+	   sh ' rm -rf ./.passfile'
 
            sh ' ls -la '   
            }
